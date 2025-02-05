@@ -39,6 +39,7 @@ APlayerPawn::APlayerPawn()
 
 	BoxComp->SetCollisionResponseToAllChannels(ECR_Ignore);
 	BoxComp->SetCollisionResponseToChannel(ECC_GameTraceChannel2, ECR_Overlap);
+	BoxComp->SetCollisionResponseToChannel(ECC_WorldStatic,ECR_Block);
 }
 
 // Called when the game starts or when spawned
@@ -70,7 +71,7 @@ void APlayerPawn::Tick(float DeltaTime)
 
 	FVector NewLoaction = GetActorLocation() + Direction * MoveSpeed * DeltaTime;
 
-	SetActorLocation(NewLoaction);
+	SetActorLocation(NewLoaction, true);
 }
 
 // Called to bind functionality to input

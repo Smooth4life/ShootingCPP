@@ -45,6 +45,8 @@ void AEnemyActor::BeginPlay()
 	{
 		Direction = GetActorForwardVector();
 	}
+
+	BoxComp->OnComponentBeginOverlap.AddDynamic(this, &AEnemyActor::OnEnemytOverlap);
 }
 
 // Called every frame
@@ -54,5 +56,18 @@ void AEnemyActor::Tick(float DeltaTime)
 
 	FVector NewLocation = GetActorLocation() + Direction * MoveSpeed * DeltaTime;
 	SetActorLocation(NewLocation);
+}
+
+void AEnemyActor::OnEnemytOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	APlayerPawn* Player = Cast<APlayerPawn>(OtherActor);
+
+	if (Player != nullptr)
+	{
+		//Player가 정상적으로 형변환 되면 들어오게 된다.
+		OtherActor->Destroy();
+	}
+
+	Destroy();
 }
 
