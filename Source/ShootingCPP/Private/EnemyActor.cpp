@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "EngineUtils.h"
 #include "PlayerPawn.h"
+#include "ShootingGameModeBase.h"
 
 // Sets default values
 AEnemyActor::AEnemyActor()
@@ -66,8 +67,17 @@ void AEnemyActor::OnEnemytOverlap(UPrimitiveComponent* OverlappedComponent, AAct
 	{
 		//Player가 정상적으로 형변환 되면 들어오게 된다.
 		OtherActor->Destroy();
+
+		AShootingGameModeBase* CurrentGameModeBase = Cast<AShootingGameModeBase>(GetWorld()->GetAuthGameMode());
+
+		if (CurrentGameModeBase != nullptr)
+		{
+			CurrentGameModeBase->ShowMenu();
+		}
 	}
 
 	Destroy();
+
+
 }
 

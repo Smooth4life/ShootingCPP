@@ -5,12 +5,26 @@
 #include "Blueprint/UserWidget.h"
 #include "MainWidget.h"
 #include "Components/TextBlock.h"
+#include "ManuWidget.h"
 
 void AShootingGameModeBase::AddScore(int32 Point)
 {
 	CurrentScore += Point;
 
 	PrintScore();
+}
+
+void AShootingGameModeBase::ShowMenu()
+{
+	if (MenuWidget != nullptr)
+	{
+		MenuUI = CreateWidget<UManuWidget>(GetWorld(), MenuWidget);
+
+		if (MenuUI != nullptr)
+		{
+			MenuUI->AddToViewport();
+		}
+	}
 }
 
 void AShootingGameModeBase::BeginPlay()

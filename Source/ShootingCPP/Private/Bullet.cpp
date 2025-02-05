@@ -56,6 +56,7 @@ void ABullet::OnBulletOverlap(UPrimitiveComponent* OverlappedComponent, AActor* 
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionFX, GetActorLocation(), GetActorRotation());
 
 		AGameModeBase* CurrentMode = GetWorld()->GetAuthGameMode();
+
 		AShootingGameModeBase* CurrentGameModeBase = Cast<AShootingGameModeBase>(CurrentMode);
 		
 		if (CurrentGameModeBase != nullptr)
