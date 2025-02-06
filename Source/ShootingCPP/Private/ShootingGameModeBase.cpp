@@ -7,6 +7,7 @@
 #include "Components/TextBlock.h"
 #include "ManuWidget.h"
 #include "Kismet/GameplayStatics.h"
+#include "ShootingGameInstance.h"
 
 void AShootingGameModeBase::AddScore(int32 Point)
 {
@@ -52,5 +53,16 @@ void AShootingGameModeBase::PrintScore()
 	if (MainUI != nullptr)
 	{
 		MainUI->ScoreData->SetText(FText::AsNumber(CurrentScore));
+		MainUI->BestScoreData->SetText(FText::AsNumber(BestScore));
 	}
+}
+
+void AShootingGameModeBase::LoadBestScore()
+{
+
+}
+
+void AShootingGameModeBase::SaveBestScore()
+{
+
 }

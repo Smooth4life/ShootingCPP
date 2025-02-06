@@ -30,11 +30,14 @@ protected:
 
 private:
 	int32 CurrentScore = 0;
+	int32 BestScore = 0;
 
 	class UMainWidget* MainUI;
 
 	class UManuWidget* MenuUI;
 
 	void PrintScore();
+	void LoadBestScore();
+	void SaveBestScore();
 	
 };
