@@ -20,4 +20,10 @@ public:
 
 	UPROPERTY(EditAnywhere, meta = (Bindwidget))
 	class UTextBlock* ScoreData;
+
+	UPROPERTY(EditAnywhere, meta = (Bindwidget))
+	class UTextBlock* BestScoreText;
+
+	UPROPERTY(EditAnywhere, meta = (Bindwidget))
+	class UTextBlock* BestScoreData;
 };
